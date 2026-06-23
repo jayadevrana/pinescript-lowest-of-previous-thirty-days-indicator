@@ -1,0 +1,400 @@
+//@version=5
+indicator("Lowest of Previous Thirty Days", overlay=true)
+
+// Fetch the low prices for the previous 30 days
+
+[day1,dayhigh,dayclose] = request.security(syminfo.tickerid, "D", [low[0],high[1],close[1]])
+
+high_line = line.new(x1=bar_index, y1=dayhigh, x2=bar_index+1, y2=dayhigh, color=color.red, width=2, extend=extend.both)
+line.delete(high_line[1])
+
+close_line = line.new(x1=bar_index, y1=dayclose, x2=bar_index+1, y2=dayclose, color=color.red, width=2, extend=extend.both)
+line.delete(close_line[1])
+
+
+day2 = request.security(syminfo.tickerid, "D", low[1])
+day3 = request.security(syminfo.tickerid, "D", low[2])
+day4 = request.security(syminfo.tickerid, "D", low[3])
+day5 = request.security(syminfo.tickerid, "D", low[4])
+day6 = request.security(syminfo.tickerid, "D", low[5])
+day7 = request.security(syminfo.tickerid, "D", low[6])
+day8 = request.security(syminfo.tickerid, "D", low[7])
+day9 = request.security(syminfo.tickerid, "D", low[8])
+day10 = request.security(syminfo.tickerid, "D", low[9])
+day11 = request.security(syminfo.tickerid, "D", low[10])
+day12 = request.security(syminfo.tickerid, "D", low[11])
+day13 = request.security(syminfo.tickerid, "D", low[12])
+day14 = request.security(syminfo.tickerid, "D", low[13])
+day15 = request.security(syminfo.tickerid, "D", low[14])
+day16 = request.security(syminfo.tickerid, "D", low[15])
+day17 = request.security(syminfo.tickerid, "D", low[16])
+day18 = request.security(syminfo.tickerid, "D", low[17])
+day19 = request.security(syminfo.tickerid, "D", low[18])
+day20 = request.security(syminfo.tickerid, "D", low[19])
+day21 = request.security(syminfo.tickerid, "D", low[20])
+day22 = request.security(syminfo.tickerid, "D", low[21])
+day23 = request.security(syminfo.tickerid, "D", low[22])
+day24 = request.security(syminfo.tickerid, "D", low[23])
+day25 = request.security(syminfo.tickerid, "D", low[24])
+day26 = request.security(syminfo.tickerid, "D", low[25])
+day27 = request.security(syminfo.tickerid, "D", low[26])
+day28 = request.security(syminfo.tickerid, "D", low[27])
+day29 = request.security(syminfo.tickerid, "D", low[28])
+day30 = request.security(syminfo.tickerid, "D", low[29])
+
+// Define and update the lowest low for each day (up to 30)
+
+// Lowest of day 1 and day 2
+lowestLow1 = math.min(day1, day2)
+var line lowestLine1 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine1)
+    lowestLine1 := line.new(x1=bar_index, y1=lowestLow1, x2=bar_index+1, y2=lowestLow1, color=color.red, width=2, extend=extend.both)
+
+// Lowest of day 1 to day 3
+lowestLow2 = math.min(day1, day2, day3)
+var line lowestLine2 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine2)
+    lowestLine2 := line.new(x1=bar_index, y1=lowestLow2, x2=bar_index+1, y2=lowestLow2, color=color.green, width=2, extend=extend.both)
+
+// Lowest of day 1 to day 4
+lowestLow3 = math.min(day1, day2, day3, day4)
+var line lowestLine3 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine3)
+    lowestLine3 := line.new(x1=bar_index, y1=lowestLow3, x2=bar_index+1, y2=lowestLow3, color=color.blue, width=2, extend=extend.both)
+
+// Lowest of day 1 to day 5
+lowestLow4 = math.min(day1, day2, day3, day4, day5)
+var line lowestLine4 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine4)
+    lowestLine4 := line.new(x1=bar_index, y1=lowestLow4, x2=bar_index+1, y2=lowestLow4, color=color.orange, width=2, extend=extend.both)
+
+// Keep extending for all 30 days
+lowestLow5 = math.min(day1, day2, day3, day4, day5, day6)
+var line lowestLine5 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine5)
+    lowestLine5 := line.new(x1=bar_index, y1=lowestLow5, x2=bar_index+1, y2=lowestLow5, color=color.purple, width=2, extend=extend.both)
+
+lowestLow6 = math.min(day1, day2, day3, day4, day5, day6, day7)
+var line lowestLine6 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine6)
+    lowestLine6 := line.new(x1=bar_index, y1=lowestLow6, x2=bar_index+1, y2=lowestLow6, color=color.yellow, width=2, extend=extend.both)
+
+lowestLow7 = math.min(day1, day2, day3, day4, day5, day6, day7, day8)
+var line lowestLine7 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine7)
+    lowestLine7 := line.new(x1=bar_index, y1=lowestLow7, x2=bar_index+1, y2=lowestLow7, color=color.aqua, width=2, extend=extend.both)
+
+lowestLow8 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9)
+var line lowestLine8 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine8)
+    lowestLine8 := line.new(x1=bar_index, y1=lowestLow8, x2=bar_index+1, y2=lowestLow8, color=color.gray, width=2, extend=extend.both)
+
+lowestLow9 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10)
+var line lowestLine9 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine9)
+    lowestLine9 := line.new(x1=bar_index, y1=lowestLow9, x2=bar_index+1, y2=lowestLow9, color=color.fuchsia, width=2, extend=extend.both)
+
+// Keep going until day 30
+lowestLow10 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11)
+var line lowestLine10 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine10)
+    lowestLine10 := line.new(x1=bar_index, y1=lowestLow10, x2=bar_index+1, y2=lowestLow10, color=color.red, width=2, extend=extend.both)
+
+// Repeat similarly for days 11 to 30
+lowestLow11 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12)
+var line lowestLine11 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine11)
+    lowestLine11 := line.new(x1=bar_index, y1=lowestLow11, x2=bar_index+1, y2=lowestLow11, color=color.blue, width=2, extend=extend.both)
+
+
+lowestLow12 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13)
+var line lowestLine12 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine12)
+    lowestLine12 := line.new(x1=bar_index, y1=lowestLow12, x2=bar_index+1, y2=lowestLow12, color=color.blue, width=2, extend=extend.both)
+
+lowestLow13 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14)
+var line lowestLine13 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine13)
+    lowestLine13 := line.new(x1=bar_index, y1=lowestLow13, x2=bar_index+1, y2=lowestLow13, color=color.blue, width=2, extend=extend.both)
+
+lowestLow14 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15)
+var line lowestLine14 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine14)
+    lowestLine14 := line.new(x1=bar_index, y1=lowestLow14, x2=bar_index+1, y2=lowestLow14, color=color.blue, width=2, extend=extend.both)
+
+lowestLow15 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16)
+var line lowestLine15 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine15)
+    lowestLine15 := line.new(x1=bar_index, y1=lowestLow15, x2=bar_index+1, y2=lowestLow15, color=color.blue, width=2, extend=extend.both)
+
+
+lowestLow16 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17)
+var line lowestLine16 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine16)
+    lowestLine16 := line.new(x1=bar_index, y1=lowestLow16, x2=bar_index+1, y2=lowestLow16, color=color.blue, width=2, extend=extend.both)
+
+lowestLow17 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18)
+var line lowestLine17 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine17)
+    lowestLine17 := line.new(x1=bar_index, y1=lowestLow17, x2=bar_index+1, y2=lowestLow17, color=color.blue, width=2, extend=extend.both)
+
+lowestLow18 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19)
+var line lowestLine18 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine18)
+    lowestLine18 := line.new(x1=bar_index, y1=lowestLow18, x2=bar_index+1, y2=lowestLow18, color=color.blue, width=2, extend=extend.both)
+
+lowestLow19 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20)
+var line lowestLine19 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine19)
+    lowestLine19 := line.new(x1=bar_index, y1=lowestLow19, x2=bar_index+1, y2=lowestLow19, color=color.blue, width=2, extend=extend.both)
+
+
+lowestLow20 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21)
+var line lowestLine20 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine20)
+    lowestLine20 := line.new(x1=bar_index, y1=lowestLow20, x2=bar_index+1, y2=lowestLow20, color=color.blue, width=2, extend=extend.both)
+
+lowestLow21 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22)
+var line lowestLine21 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine21)
+    lowestLine21 := line.new(x1=bar_index, y1=lowestLow21, x2=bar_index+1, y2=lowestLow21, color=color.blue, width=2, extend=extend.both)
+
+lowestLow22 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23)
+var line lowestLine22 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine22)
+    lowestLine22 := line.new(x1=bar_index, y1=lowestLow22, x2=bar_index+1, y2=lowestLow22, color=color.blue, width=2, extend=extend.both)
+
+lowestLow23 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24)
+var line lowestLine23 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine23)
+    lowestLine23 := line.new(x1=bar_index, y1=lowestLow23, x2=bar_index+1, y2=lowestLow23, color=color.blue, width=2, extend=extend.both)
+
+lowestLow24 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25)
+var line lowestLine24 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine24)
+    lowestLine24 := line.new(x1=bar_index, y1=lowestLow24, x2=bar_index+1, y2=lowestLow24, color=color.blue, width=2, extend=extend.both)
+
+lowestLow25 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26)
+var line lowestLine25 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine25)
+    lowestLine25 := line.new(x1=bar_index, y1=lowestLow25, x2=bar_index+1, y2=lowestLow25, color=color.blue, width=2, extend=extend.both)
+
+lowestLow26 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27)
+var line lowestLine26 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine26)
+    lowestLine26 := line.new(x1=bar_index, y1=lowestLow26, x2=bar_index+1, y2=lowestLow26, color=color.blue, width=2, extend=extend.both)
+
+lowestLow27 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28)
+var line lowestLine27 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine27)
+    lowestLine27 := line.new(x1=bar_index, y1=lowestLow27, x2=bar_index+1, y2=lowestLow27, color=color.blue, width=2, extend=extend.both)
+
+lowestLow28 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28, day29)
+var line lowestLine28 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine28)
+    lowestLine28 := line.new(x1=bar_index, y1=lowestLow28, x2=bar_index+1, y2=lowestLow28, color=color.blue, width=2, extend=extend.both)
+
+lowestLow29 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28, day29, day30)
+var line lowestLine29 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine29)
+    lowestLine29 := line.new(x1=bar_index, y1=lowestLow29, x2=bar_index+1, y2=lowestLow29, color=color.blue, width=2, extend=extend.both)
+
+lowestLow30 = math.min(day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28, day29, day30)
+var line lowestLine30 = na
+if (dayofweek != dayofweek[1])
+    line.delete(lowestLine30)
+    lowestLine30 := line.new(x1=bar_index, y1=lowestLow30, x2=bar_index+1, y2=lowestLow30, color=color.blue, width=2, extend=extend.both)
+
+
+pivotTypeInput = input.string(title="Type", defval="Traditional", options=["Traditional", "Fibonacci", "Woodie", "Classic", "DM", "Camarilla"])
+pivotAnchorInput = input.string(title="Pivots Timeframe", defval="Auto", options=["Auto", "Daily", "Weekly", "Monthly", "Quarterly", "Yearly", "Biyearly", "Triyearly", "Quinquennially", "Decennially"])
+maxHistoricalPivotsInput = input.int(title="Number of Pivots Back", defval=15, minval=1, maxval=200, display = display.data_window)
+isDailyBasedInput = input.bool(title="Use Daily-based Values", defval=true, display = display.data_window, tooltip="When this option is unchecked, Pivot Points will use intraday data while calculating on intraday charts. If Extended Hours are displayed on the chart, they will be taken into account during the pivot level calculation. If intraday OHLC values are different from daily-based values (normal for stocks), the pivot levels will also differ.")
+showLabelsInput = input.bool(title="Show Labels", defval=true, group="labels", display = display.data_window)
+showPricesInput = input.bool(title="Show Prices", defval=true, group="labels", display = display.data_window)
+positionLabelsInput = input.string("Left", "Labels Position", options=["Left", "Right"], group="labels", display = display.data_window)
+linewidthInput = input.int(title="Line Width", defval=1, minval=1, maxval=100, group="levels", display = display.data_window)
+
+DEFAULT_COLOR = #FB8C00
+pColorInput = input.color(DEFAULT_COLOR, "P‏  ‏  ‏", inline="P", group="levels", display = display.data_window)
+pShowInput = input.bool(true, "", inline="P", group="levels", display = display.data_window)
+s1ColorInput = input.color(DEFAULT_COLOR, "S1", inline="S1/R1" , group="levels", display = display.data_window)
+s1ShowInput = input.bool(true, "", inline="S1/R1", group="levels", display = display.data_window)
+r1ColorInput = input.color(DEFAULT_COLOR, "‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏R1", inline="S1/R1", group="levels", display = display.data_window)
+r1ShowInput = input.bool(true, "", inline="S1/R1", group="levels", display = display.data_window)
+s2ColorInput = input.color(DEFAULT_COLOR, "S2", inline="S2/R2", group="levels", display = display.data_window)
+s2ShowInput = input.bool(true, "", inline="S2/R2", group="levels", display = display.data_window)
+r2ColorInput = input.color(DEFAULT_COLOR, "‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏R2", inline="S2/R2", group="levels", display = display.data_window)
+r2ShowInput = input.bool(true, "", inline="S2/R2", group="levels", tooltip = "Not applicable to DM", display = display.data_window)
+s3ColorInput = input.color(DEFAULT_COLOR, "S3", inline="S3/R3", group="levels", display = display.data_window)
+s3ShowInput = input.bool(true, "", inline="S3/R3", group="levels", display = display.data_window)
+r3ColorInput = input.color(DEFAULT_COLOR, "‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏R3", inline="S3/R3", group="levels", display = display.data_window)
+r3ShowInput = input.bool(true, "", inline="S3/R3", group="levels", tooltip = "Not applicable to DM", display = display.data_window)
+s4ColorInput = input.color(DEFAULT_COLOR, "S4", inline="S4/R4", group="levels", display = display.data_window)
+s4ShowInput = input.bool(true, "", inline="S4/R4", group="levels", display = display.data_window)
+r4ColorInput = input.color(DEFAULT_COLOR, "‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏R4", inline="S4/R4", group="levels", display = display.data_window)
+r4ShowInput = input.bool(true, "", inline="S4/R4", group="levels", tooltip = "Not applicable to: Fibonacci, DM", display = display.data_window)
+s5ColorInput = input.color(DEFAULT_COLOR, "S5", inline="S5/R5", group="levels", display = display.data_window)
+s5ShowInput = input.bool(true, "", inline="S5/R5", group="levels", display = display.data_window)
+r5ColorInput = input.color(DEFAULT_COLOR, "‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏R5", inline="S5/R5", group="levels", display = display.data_window)
+r5ShowInput = input.bool(true, "", inline="S5/R5", group="levels", tooltip = "Not applicable to: Fibonacci, Woodie, Classic, DM", display = display.data_window)
+
+type graphicSettings
+    string levelName
+    color levelColor
+    bool showLevel
+
+var graphicSettingsArray = array.from(
+      graphicSettings.new(" P", pColorInput, pShowInput),
+      graphicSettings.new("R1", r1ColorInput, r1ShowInput), graphicSettings.new("S1", s1ColorInput, s1ShowInput),
+      graphicSettings.new("R2", r2ColorInput, r2ShowInput), graphicSettings.new("S2", s2ColorInput, s2ShowInput),
+      graphicSettings.new("R3", r3ColorInput, r3ShowInput), graphicSettings.new("S3", s3ColorInput, s3ShowInput),
+      graphicSettings.new("R4", r4ColorInput, r4ShowInput), graphicSettings.new("S4", s4ColorInput, s4ShowInput),
+      graphicSettings.new("R5", r5ColorInput, r5ShowInput), graphicSettings.new("S5", s5ColorInput, s5ShowInput))
+
+autoAnchor = switch
+    timeframe.isintraday => timeframe.multiplier <= 15 ? "1D" : "1W"
+    timeframe.isdaily    => "1M"
+    => "12M"
+
+pivotTimeframe = switch pivotAnchorInput
+    "Auto"      => autoAnchor
+    "Daily"     => "1D"
+    "Weekly"    => "1W"
+    "Monthly"   => "1M"
+    "Quarterly" => "3M"
+    => "12M"
+
+//@variable The number of years in the selected Pivot period
+pivotYearMultiplier = switch pivotAnchorInput
+    "Biyearly"       => 2
+    "Triyearly"      => 3
+    "Quinquennially" => 5
+    "Decennially"    => 10
+    => 1
+
+//@variable The number of values in the pivots of the selected type
+numOfPivotLevels = switch pivotTypeInput
+    "Traditional" => 11
+    "Camarilla"   => 11
+    "Woodie"      => 9
+    "Classic"     => 9
+    "Fibonacci"   => 7
+    "DM"          => 3
+
+type pivotGraphic
+    line pivotLine
+    label pivotLabel
+
+method delete(pivotGraphic graphic) =>
+    graphic.pivotLine.delete()
+    graphic.pivotLabel.delete()
+
+var drawnGraphics = matrix.new<pivotGraphic>()
+
+localPivotTimeframeChange = timeframe.change(pivotTimeframe) and year % pivotYearMultiplier == 0
+securityPivotTimeframeChange = timeframe.change(timeframe.period) and year % pivotYearMultiplier == 0
+
+pivotTimeframeChangeCounter(condition) => 
+    var count = 0
+    if condition and bar_index > 0
+        count += 1
+    count
+
+localPivots = ta.pivot_point_levels(pivotTypeInput, localPivotTimeframeChange)
+securityPivotPointsArray = ta.pivot_point_levels(pivotTypeInput, securityPivotTimeframeChange)
+
+securityTimeframe = timeframe.isintraday ? "1D" : timeframe.period
+[securityPivots, securityPivotCounter] = request.security(syminfo.tickerid, pivotTimeframe, [securityPivotPointsArray, pivotTimeframeChangeCounter(securityPivotTimeframeChange)], lookahead = barmerge.lookahead_on)
+pivotPointsArray = isDailyBasedInput ? securityPivots : localPivots
+
+//@function Sets the ending points of the currently active pivots to `endTime`.
+affixOldPivots(endTime) =>
+    if drawnGraphics.rows() > 0
+        lastGraphics = drawnGraphics.row(drawnGraphics.rows() - 1)
+
+        for graphic in lastGraphics
+            graphic.pivotLine.set_x2(endTime)
+            if positionLabelsInput == "Right"
+                graphic.pivotLabel.set_x(endTime)
+
+//@function Draws pivot lines and labels from `startTime` to the approximate end of the period.
+drawNewPivots(startTime) =>
+    
+    newGraphics = array.new<pivotGraphic>()
+
+    for [index, coord] in pivotPointsArray
+        levelSettings = graphicSettingsArray.get(index)
+        if not na(coord) and levelSettings.showLevel
+            lineEndTime = startTime + timeframe.in_seconds(pivotTimeframe) * 1000 * pivotYearMultiplier
+            pivotLine = line.new(startTime, coord, lineEndTime, coord, xloc = xloc.bar_time, color=levelSettings.levelColor, width=linewidthInput,extend = extend.both)
+            pivotLabel = label.new(x = positionLabelsInput == "Left" ? startTime : lineEndTime,
+                               y = coord,
+                               text = (showLabelsInput ? levelSettings.levelName + " " : "") + (showPricesInput ? "(" + str.tostring(coord, format.mintick) + ")" : ""),
+                               style = positionLabelsInput == "Left" ? label.style_label_right : label.style_label_left,
+                               textcolor = levelSettings.levelColor,
+                               color = #00000000,
+                               xloc=xloc.bar_time)
+            
+            newGraphics.push(pivotGraphic.new(pivotLine, pivotLabel))
+    
+    drawnGraphics.add_row(array_id = newGraphics)
+
+    if drawnGraphics.rows() > maxHistoricalPivotsInput
+        oldGraphics = drawnGraphics.remove_row(0)
+        
+        for graphic in oldGraphics
+            graphic.delete()
+
+
+localPivotDrawConditionStatic = not isDailyBasedInput and localPivotTimeframeChange
+securityPivotDrawConditionStatic = isDailyBasedInput and securityPivotCounter != securityPivotCounter[1]
+
+var isMultiYearly = array.from("Biyearly", "Triyearly", "Quinquennially", "Decennially").includes(pivotAnchorInput)
+localPivotDrawConditionDeveloping = not isDailyBasedInput and time_close == time_close(pivotTimeframe) and not isMultiYearly 
+securityPivotDrawConditionDeveloping = false
+
+if (securityPivotDrawConditionStatic or localPivotDrawConditionStatic)
+    affixOldPivots(time)
+    drawNewPivots(time)
+
+// If possible, draw pivots from the beginning of the chart if none were found
+var FIRST_BAR_TIME = time
+if (barstate.islastconfirmedhistory and drawnGraphics.columns() == 0)
+
+    if not na(securityPivots) and securityPivotCounter > 0
+        if isDailyBasedInput
+            drawNewPivots(FIRST_BAR_TIME)
+        else 
+            runtime.error("Not enough intraday data to calculate Pivot Points. Lower the Pivots Timeframe or turn on the 'Use Daily-based Values' option in the indicator settings.")
+    else
+        runtime.error("Not enough data to calculate Pivot Points. Lower the Pivots Timeframe in the indicator settings.")
